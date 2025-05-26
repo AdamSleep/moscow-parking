@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Где парковка? | Бесплатные парковки Москвы</title>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=341b8cc6-167c-4603-9212-e1868504cb1b&lang=ru_RU"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <i class="fas fa-parking"></i>
+        <span>Где парковка?</span>
+      </div>
+      <div class="feedback-buttons">
+        <a href="https://t.me/fhfdcv" class="tg-button" target="_blank">
+          <i class="fab fa-telegram"></i>
+          <span>Предложить парковку</span>
+        </a>
+        <a href="https://t.me/fhfdcv" class="tg-button" target="_blank">
+          <i class="fab fa-telegram"></i>
+          <span>Сообщить о неактуальности</span>
+        </a>
+      </div>
+      <div class="stats">
+        <div class="stat-item">
+          <i class="fas fa-car"></i>
+          <span id="total-spots">0</span>
+          <span>парковок</span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="sidebar">
+        <div class="search-container">
+          <i class="fas fa-search"></i>
+          <input type="text" class="search" placeholder="Поиск по адресу..." />
+        </div>
+
+        <div class="filters">
+          <button class="filter-btn active" data-spots="all">Все</button>
+          <button class="filter-btn" data-spots="1-5">1-5 мест</button>
+          <button class="filter-btn" data-spots="5-10">5-10 мест</button>
+          <button class="filter-btn" data-spots="10+">10+ мест</button>
+        </div>
+
+        <div class="parking-list-container">
+          <ul class="parking-list"></ul>
+        </div>
+      </div>
+
+      <div id="map"></div>
+    </main>
+
+    <div class="overlay"></div>
+    <div class="popup">
+      <span class="close-popup"><i class="fas fa-times"></i></span>
+      <h3>Построить маршрут</h3>
+      <div class="popup-content">
+        <div class="parking-info">
+          <i class="fas fa-map-marker-alt"></i>
+          <p class="popup-address"></p>
+          <p class="popup-details"></p>
+        </div>
+        <div class="popup-buttons">
+          <button class="popup-button yandex">
+            <i class="fas fa-location-arrow"></i>
+            Яндекс Карты
+          </button>
+          <button class="popup-button google">
+            <i class="fab fa-google"></i>
+            Google Maps
+          </button>
+          <button class="popup-button dgis">
+            <i class="fas fa-map"></i>
+            2ГИС
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="parkingData.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
