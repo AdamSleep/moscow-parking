@@ -111,6 +111,17 @@ header {
 
 main {
   display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+
+.mobile-tabs {
+  display: none;
+}
+
+.content-wrapper {
+  display: flex;
   flex: 1;
   overflow: hidden;
 }
@@ -368,75 +379,126 @@ main {
     justify-content: center;
   }
 
-  main {
-    flex-direction: column;
+  .mobile-tabs {
+    display: flex;
+    padding: 10px;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  .tab-btn {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    background: #f5f5f5;
+    color: #666;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .tab-btn.active {
+    background: #3498db;
+    color: white;
+  }
+
+  .tab-btn i {
+    font-size: 18px;
+  }
+
+  .content-wrapper {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
   }
 
   .sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 45vh;
-    min-height: 300px;
+    height: 100%;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    background: #fff;
+    z-index: 10;
+  }
+
+  .sidebar.active-tab {
+    transform: translateX(0);
+  }
+
+  #map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  }
+
+  #map.active-tab {
+    transform: translateX(0);
   }
 
   .search-container {
-    padding: 10px;
+    padding: 15px;
   }
 
   .search {
-    padding: 10px 15px 10px 40px;
-    font-size: 14px;
+    padding: 12px 15px 12px 40px;
+    font-size: 16px;
+    height: 45px;
   }
 
   .filters {
-    padding: 0 10px 10px;
-    justify-content: center;
+    padding: 0 15px 15px;
+    justify-content: flex-start;
+    gap: 8px;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 5px;
   }
 
   .filter-btn {
-    padding: 6px 12px;
-    font-size: 13px;
+    padding: 8px 16px;
+    font-size: 14px;
+    flex-shrink: 0;
   }
 
   .parking-list-container {
-    padding: 0 10px;
+    padding: 0 15px;
   }
 
   .parking-item {
-    padding: 12px;
+    padding: 15px;
     margin-bottom: 10px;
   }
 
   .parking-address {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .parking-details {
-    font-size: 12px;
-  }
-
-  #map {
-    height: 55vh;
+    font-size: 14px;
   }
 
   .popup {
     width: 90%;
-    max-width: 350px;
     padding: 20px;
-  }
-
-  .popup h3 {
-    font-size: 18px;
-    margin-bottom: 15px;
+    max-width: none;
   }
 
   .popup-button {
-    padding: 10px;
-    font-size: 14px;
-  }
-
-  .close-popup {
-    top: 15px;
-    right: 15px;
+    padding: 15px;
+    font-size: 16px;
   }
 }
 
@@ -444,11 +506,11 @@ main {
 @media (max-width: 380px) {
   .feedback-buttons {
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
   }
 
   .tg-button {
-    width: 100%;
+    text-align: center;
     justify-content: center;
   }
 
