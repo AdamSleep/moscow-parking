@@ -22,8 +22,13 @@ document.querySelectorAll(".filter-btn").forEach((btn) => {
     } else if (filter === "10+") {
       filteredSpots = parkingSpots.filter((spot) => {
         const range = spot.spotsRange;
-        const numbers = range.split("-").map(Number);
-        return Math.max(...numbers) >= 10;
+        // Если это одно число
+        if (!range.includes("-")) {
+          return Number(range) >= 10;
+        }
+        // Если это диапазон
+        const [min, max] = range.split("-").map(Number);
+        return min >= 10; // Теперь проверяем минимальное значение
       });
     } else {
       filteredSpots = parkingSpots.filter((spot) => spot.spotsRange === filter);
