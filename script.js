@@ -31,7 +31,7 @@ document.querySelectorAll(".filter-btn").forEach((btn) => {
 
     updateParkingList(filteredSpots);
     updateMapMarkers(filteredSpots);
-    updateStats(filteredSpots); // Обновляем счетчик для отфильтрованных парковок
+    updateStats(filteredSpots);
   });
 });
 
@@ -76,7 +76,7 @@ function init() {
 // Функция обновления маркеров на карте
 function updateMapMarkers(spots) {
   // Удаляем все маркеры с карты
-  markers.forEach((marker) => map.geoObjects.remove(marker));
+  markers.forEach(marker => map.geoObjects.remove(marker));
   markers = [];
 
   // Добавляем только отфильтрованные маркеры
@@ -111,7 +111,7 @@ document.querySelector(".search").addEventListener("input", (e) => {
   );
   updateParkingList(filteredSpots);
   updateMapMarkers(filteredSpots);
-  updateStats(filteredSpots); // Обновляем счетчик при поиске
+  updateStats(filteredSpots);
 });
 
 // Обновление списка парковок
@@ -186,4 +186,25 @@ document.querySelector(".close-popup").addEventListener("click", () => {
 document.querySelector(".overlay").addEventListener("click", () => {
   document.querySelector(".popup").style.display = "none";
   document.querySelector(".overlay").style.display = "none";
+});
+
+// Обработка переключения табов на мобильных устройствах
+document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        // Убираем активный класс со всех кнопок
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        // Добавляем активный класс нажатой кнопке
+        btn.classList.add('active');
+
+        // Убираем активный класс со всех табов
+        document.querySelector('.sidebar').classList.remove('active-tab');
+        document.querySelector('#map').classList.remove('active-tab');
+
+        // Показываем нужный таб
+        if (btn.dataset.tab === 'list') {
+            document.querySelector('.sidebar').classList.add('active-tab');
+        } else {
+            document.querySelector('#map').classList.add('active-tab');
+        }
+    });
 });
