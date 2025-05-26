@@ -41,25 +41,38 @@
     </header>
 
     <main>
-      <div class="sidebar">
-        <div class="search-container">
-          <i class="fas fa-search"></i>
-          <input type="text" class="search" placeholder="Поиск по адресу..." />
-        </div>
-
-        <div class="filters">
-          <button class="filter-btn active" data-spots="all">Все</button>
-          <button class="filter-btn" data-spots="1-5">1-5 мест</button>
-          <button class="filter-btn" data-spots="5-10">5-10 мест</button>
-          <button class="filter-btn" data-spots="10+">10+ мест</button>
-        </div>
-
-        <div class="parking-list-container">
-          <ul class="parking-list"></ul>
-        </div>
+      <div class="mobile-tabs">
+        <button class="tab-btn active" data-tab="map">
+          <i class="fas fa-map-marked-alt"></i>
+          Карта
+        </button>
+        <button class="tab-btn" data-tab="list">
+          <i class="fas fa-list"></i>
+          Список
+        </button>
       </div>
 
-      <div id="map"></div>
+      <div class="content-wrapper">
+        <div class="sidebar" id="listTab">
+          <div class="search-container">
+            <i class="fas fa-search"></i>
+            <input type="text" class="search" placeholder="Поиск по адресу..." />
+          </div>
+
+          <div class="filters">
+            <button class="filter-btn active" data-spots="all">Все</button>
+            <button class="filter-btn" data-spots="1-5">1-5 мест</button>
+            <button class="filter-btn" data-spots="5-10">5-10 мест</button>
+            <button class="filter-btn" data-spots="10+">10+ мест</button>
+          </div>
+
+          <div class="parking-list-container">
+            <ul class="parking-list"></ul>
+          </div>
+        </div>
+
+        <div id="map" class="active-tab"></div>
+      </div>
     </main>
 
     <div class="overlay"></div>
