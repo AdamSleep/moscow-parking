@@ -175,11 +175,13 @@ function showNavigationPopup(spot) {
   };
 
   dgisButton.onclick = () => {
+    const lat = spot.coordinates[0];
+    const lon = spot.coordinates[1];
     window.open(
-      `https://2gis.ru/moscow?m=${spot.coordinates[1]},${spot.coordinates[0]}/callout`,
+      `https://2gis.ru/moscow/geo/${lon},${lat}?m=${lon},${lat}/17`,
       "_blank"
     );
-  };
+};
 }
 
 // Закрытие всплывающего окна
